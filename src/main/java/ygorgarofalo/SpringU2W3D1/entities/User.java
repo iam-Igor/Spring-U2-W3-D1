@@ -39,11 +39,12 @@ public class User {
     private List<Device> deviceList;
 
 
-    public User(String name, String surname, String email, String username) {
+    public User(String name, String surname, String email, String username, String password) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.username = username;
         this.avatarUrl = null;
+        this.password = password;
     }
 }

@@ -47,7 +47,7 @@ public class UserService {
     public User saveUser(UserPayloadDTO payload) {
 
 
-        User newUser = new User(payload.name(), payload.surname(), payload.email(), payload.username());
+        User newUser = new User(payload.name(), payload.surname(), payload.email(), payload.username(), payload.password());
 
         // controlli sull'esistenza sul db di email e username tramite due metodi booleani creati sul dao di User
         if (userDAO.existsByEmail(payload.email())) {
