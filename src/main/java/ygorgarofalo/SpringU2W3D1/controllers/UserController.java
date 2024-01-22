@@ -4,13 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ygorgarofalo.SpringU2W3D1.entities.User;
 import ygorgarofalo.SpringU2W3D1.exceptions.BadRequestExc;
 import ygorgarofalo.SpringU2W3D1.payloads.UserPayloadDTO;
-import ygorgarofalo.SpringU2W3D1.responses.UserResponse;
 import ygorgarofalo.SpringU2W3D1.services.UserService;
 
 @RestController
@@ -31,18 +29,6 @@ public class UserController {
     @GetMapping("/{id}")
     public User findById(@PathVariable long id) {
         return userService.findById(id);
-    }
-
-
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public UserResponse saveUser(@RequestBody @Validated UserPayloadDTO user, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            throw new BadRequestExc(bindingResult.getAllErrors());
-        } else {
-            User newuser = userService.saveUser(user);
-            return new UserResponse(newuser.getId());
-        }
     }
 
 

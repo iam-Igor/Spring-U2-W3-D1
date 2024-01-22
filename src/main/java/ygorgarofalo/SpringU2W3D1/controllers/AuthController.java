@@ -11,7 +11,7 @@ import ygorgarofalo.SpringU2W3D1.exceptions.BadRequestExc;
 import ygorgarofalo.SpringU2W3D1.payloads.UserLoginDTO;
 import ygorgarofalo.SpringU2W3D1.payloads.UserLoginResponseDTO;
 import ygorgarofalo.SpringU2W3D1.payloads.UserPayloadDTO;
-import ygorgarofalo.SpringU2W3D1.payloads.UserResponseDTO;
+import ygorgarofalo.SpringU2W3D1.responses.UserResponse;
 import ygorgarofalo.SpringU2W3D1.services.AuthService;
 import ygorgarofalo.SpringU2W3D1.services.UserService;
 
@@ -37,16 +37,12 @@ public class AuthController {
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
-    public UserResponseDTO createUser(@RequestBody @Validated UserPayloadDTO newUserPayload, BindingResult validation) {
-        // Per completare la validazione devo in qualche maniera fare un controllo del tipo: se ci sono errori -> manda risposta con 400 Bad Request
-        System.out.println(validation);
-        if (validation.hasErrors()) {
-            System.out.println(validation.getAllErrors());
-            throw new BadRequestExc("Ci sono errori nel payload!"); // L'eccezione arriverà agli error handlers tra i quali c'è quello che manderà la risposta con status code 400
+    public UserResponse saveUser(@RequestBody @Validated UserPayloadDTO user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            throw new BadRequestExc(bindingResult.getAllErrors());
         } else {
-            User newUser = userService.saveUser(newUserPayload);
-
-            return new UserResponseDTO(newUser.getId());
+            User newuser = userService.saveUser(user);
+            return new UserResponse(newuser.getId());
         }
     }
 }
