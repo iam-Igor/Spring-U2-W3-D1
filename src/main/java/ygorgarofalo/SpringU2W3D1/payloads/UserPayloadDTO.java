@@ -2,6 +2,7 @@ package ygorgarofalo.SpringU2W3D1.payloads;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 public record UserPayloadDTO(
 
@@ -16,5 +17,12 @@ public record UserPayloadDTO(
         String email,
 
         @NotEmpty(message = "Lo username inserito è gia esistente")
-        String username) {
+        String username,
+
+        @NotEmpty(message = "La password non può essere vuota.")
+        @Size(min = 6, message = "La password deve avere una lunghezza minima di 6 caratteri.")
+        String password
+
+
+) {
 }

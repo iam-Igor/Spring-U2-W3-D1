@@ -32,6 +32,8 @@ public class User {
 
     private String avatarUrl;
 
+    private String password;
+
     @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Device> deviceList;

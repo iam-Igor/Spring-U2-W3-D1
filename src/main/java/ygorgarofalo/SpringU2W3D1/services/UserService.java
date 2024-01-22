@@ -110,4 +110,9 @@ public class UserService {
         return url;
     }
 
+    public User findByEmail(String email) {
+
+        return userDAO.findByEmail(email).orElseThrow(() -> new NotFoundExc(email));
+    }
+
 }
