@@ -1,4 +1,4 @@
-package ygorgarofalo.SpringU2W3D1.reposiories;
+package ygorgarofalo.SpringU2W3D1.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

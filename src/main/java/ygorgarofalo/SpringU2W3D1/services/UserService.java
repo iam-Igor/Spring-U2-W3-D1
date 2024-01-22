@@ -14,7 +14,7 @@ import ygorgarofalo.SpringU2W3D1.entities.User;
 import ygorgarofalo.SpringU2W3D1.exceptions.BadRequestExc;
 import ygorgarofalo.SpringU2W3D1.exceptions.NotFoundExc;
 import ygorgarofalo.SpringU2W3D1.payloads.UserPayloadDTO;
-import ygorgarofalo.SpringU2W3D1.reposiories.UserDAO;
+import ygorgarofalo.SpringU2W3D1.repositories.UserDAO;
 
 import java.io.IOException;
 

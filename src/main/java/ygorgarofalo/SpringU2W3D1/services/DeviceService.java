@@ -12,8 +12,8 @@ import ygorgarofalo.SpringU2W3D1.entities.User;
 import ygorgarofalo.SpringU2W3D1.exceptions.NotFoundExc;
 import ygorgarofalo.SpringU2W3D1.payloads.DeviceAssignmentPayloadDTO;
 import ygorgarofalo.SpringU2W3D1.payloads.DevicePayloadDTO;
-import ygorgarofalo.SpringU2W3D1.reposiories.DeviceDAO;
-import ygorgarofalo.SpringU2W3D1.reposiories.UserDAO;
+import ygorgarofalo.SpringU2W3D1.repositories.DeviceDAO;
+import ygorgarofalo.SpringU2W3D1.repositories.UserDAO;
 
 @Service
 public class DeviceService {
