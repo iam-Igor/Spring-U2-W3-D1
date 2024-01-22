@@ -14,7 +14,7 @@ import java.util.Date;
 public class JWTTools {
 
 
-    @Value("${JWT_SECRET}")
+    @Value("${spring.jwt.secret}")
     private String secret;
 
 
@@ -27,7 +27,7 @@ public class JWTTools {
                 .compact();
     }
 
-    public void verifyToken(String token) { // Dato un token mi lancia eccezioni in caso di token manipolato/scaduto
+    public void verifyToken(String token) {
         try {
             Jwts.parser().verifyWith(Keys.hmacShaKeyFor(secret.getBytes())).build().parse(token);
         } catch (Exception ex) {
