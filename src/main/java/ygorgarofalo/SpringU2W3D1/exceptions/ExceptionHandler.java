@@ -1,6 +1,7 @@
 package ygorgarofalo.SpringU2W3D1.exceptions;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import ygorgarofalo.SpringU2W3D1.payloads.errors.ErrorsPayloadWithList;
@@ -32,6 +33,13 @@ public class ExceptionHandler {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorsBody handleNotFoundExc(NotFoundExc ex) {
         return new ErrorsBody(ex.getMessage());
+    }
+
+
+    @org.springframework.web.bind.annotation.ExceptionHandler(AccessDeniedException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN) // 403
+    public ErrorsBody handleAccessDenied(AccessDeniedException ex) {
+        return new ErrorsBody("Il tuo ruolo non permette di accedere a questa funzionalità!");
     }
 
     @org.springframework.web.bind.annotation.ExceptionHandler(Exception.class)

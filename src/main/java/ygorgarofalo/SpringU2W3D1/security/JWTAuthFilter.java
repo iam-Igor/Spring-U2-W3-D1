@@ -49,8 +49,9 @@ public class JWTAuthFilter extends OncePerRequestFilter {
             User found = userService.findById(Long.parseLong(userId));
 
 
-            //informo spring secutity che lo user è autenticato
-            Authentication authentication = new UsernamePasswordAuthenticationToken(found, null);
+            //informo spring security che lo user è autenticato
+            Authentication authentication = new UsernamePasswordAuthenticationToken(found, null,
+                    found.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
             filterChain.doFilter(request, response);

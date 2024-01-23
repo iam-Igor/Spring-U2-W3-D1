@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import ygorgarofalo.SpringU2W3D1.entities.Role;
 import ygorgarofalo.SpringU2W3D1.entities.User;
 import ygorgarofalo.SpringU2W3D1.exceptions.BadRequestExc;
 import ygorgarofalo.SpringU2W3D1.exceptions.NotFoundExc;
@@ -47,7 +48,7 @@ public class UserService {
     public User saveUser(UserPayloadDTO payload) {
 
 
-        User newUser = new User(payload.name(), payload.surname(), payload.email(), payload.username(), payload.password());
+        User newUser = new User(payload.name(), payload.surname(), payload.email(), payload.username(), payload.password(), Role.ADMIN);
 
         // controlli sull'esistenza sul db di email e username tramite due metodi booleani creati sul dao di User
         if (userDAO.existsByEmail(payload.email())) {
