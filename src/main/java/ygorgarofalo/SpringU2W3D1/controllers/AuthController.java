@@ -41,8 +41,10 @@ public class AuthController {
         if (bindingResult.hasErrors()) {
             throw new BadRequestExc(bindingResult.getAllErrors());
         } else {
-            User newuser = userService.saveUser(user);
+            User newuser = authService.saveUser(user);
             return new UserResponse(newuser.getId());
         }
     }
+
+
 }

@@ -43,15 +43,15 @@ public class User implements UserDetails {
     private List<Device> deviceList;
 
 
-    public User(String name, String surname, String email, String username, String password, Role role) {
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.username = username;
-        this.avatarUrl = null;
-        this.password = password;
-        this.role = role;
-    }
+//    public User(String name, String surname, String email, String username, String password, Role role) {
+//        this.name = name;
+//        this.surname = surname;
+//        this.email = email;
+//        this.username = username;
+//        this.avatarUrl = null;
+//        this.password = password;
+//        this.role = role;
+//    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
